@@ -4,47 +4,45 @@
 let quotes =  [{quote: "What one programmer can do in one month, two programmers can do in two months.",
                 source: "Fred Brooks",
                 year: 1975,
-                tag: "programming",
-                color: "darkred"},
+                tag: "programming"},
 
                {quote: "Java is to JavaScript as ham is to hamster.",
                 source: "Jeremy Keith",
                 citation: "Resilient Web Design",
-                tag: "programming",
-                color: "darkslategrey"},
+                tag: "programming"},
 
                {quote: "One of the best programming skills you can have is knowing when to walk away for awhile.",
                 source: "Oscar Godson",
-                tag: "programming",
-                color: "olive"},
+                tag: "programming"},
 
                {quote: "Without requirements or design, programming is the art of adding bugs to an empty text file.",
                 source: "Louis Srygley",
-                color: "royalblue"},
+                tag: "design"},
 
                {quote: "When someone says: 'I want a programming language in which I need only say what I wish done', give him a lollipop.",
                 source: "Alan J. Perlis",
-                color: "blue"},
+                tag: "candy"},
 
                {quote: "Good design adds value faster than it adds cost.",
                 source: "Thomas C. Gale",
-                color: "purple"},
+                tag: "design"},
 
                {quote: "Programming is like kicking yourself in the face, sooner or later your nose will bleed.",
                 source: "Kyle Woodbury",
                 citation: "http://www.junauza.com",
-                color: "darkturquoise"},
+                tag: "programming"},
 
                {quote: "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.",
                 source: "Martin Golding",
-                color: "navy"},
+                tag: "defensive programming"},
 
                {quote: "Every child is an artist. The problem is how to remain an artist once he grows up",
                 source: "Pablo Picasso",
                 citation: "Time Magazine",
                 year: 1976,
-                tag: "art",
-                color: "blueviolet"}];
+                tag: "art"}];
+
+let colors = ["darkred", "darkslategrey", "olive", "royalblue", "blue", "purple", "darkturquoise", "navy", "blueviolet"];
 
 
 // Create the getRandomQuote function and name it getRandomQuote
@@ -56,12 +54,22 @@ function getRandomQuote(array) {
     return array[index]; 
 }
 
+// I am aware this is not DRY but following requirements for naming of getRandomQuote function above
+function getRandomColor(array) {
+    // get a random integer corresponding to the range of index numbers in the array
+    let index = Math.floor(Math.random() * array.length);
+
+    // return an object from the array with the index of the randomly generated number
+    return array[index]; 
+}
+
 
 // Create the printQuote funtion and name it printQuote
 function printQuote() {
     // get a random quote object from the array of quotes
     let randomQuote = getRandomQuote(quotes);
-    
+    let randomColor = getRandomColor(colors);
+
     // create empty string to build it up in subsequent code
     let stringOfQuoteProperties = "";
     
@@ -87,8 +95,8 @@ function printQuote() {
     stringOfQuoteProperties += '</p>';
 
     //print to the DOM
-    document.body.style.backgroundColor = randomQuote.color;
-    document.getElementById('loadQuote').style.backgroundColor = randomQuote.color; 
+    document.body.style.backgroundColor = randomColor;
+    document.getElementById('loadQuote').style.backgroundColor = randomColor; 
     document.getElementById('quote-box').innerHTML = stringOfQuoteProperties;
 }
 
