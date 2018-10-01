@@ -68,6 +68,11 @@ body {
   font-style: normal;
 }
 
+.tag:before {
+  content: ", ";
+  font-style: normal;
+}
+
 #loadQuote {
   position: fixed;
   width: 12em;
@@ -83,7 +88,10 @@ body {
   transition: .5s ;
 }
 #loadQuote:hover {
-  background-color: rgba(255,255,255,.25);
+  
+  font-weight: bold;
+ 
+
 }
 
 #loadQuote:focus {
